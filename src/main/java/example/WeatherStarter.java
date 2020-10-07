@@ -7,6 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import example.myweatherradar.*;
 //import example.ipma_client.IpmaService;
 
+import org.apache.logging.log4j.*;
+
 import java.util.logging.Logger;
 
 /**
@@ -19,7 +21,10 @@ public class WeatherStarter {
     loggers provide a better alternative to System.out.println
     https://rules.sonarsource.com/java/tag/bad-practice/RSPEC-106
      */
+    
     private static final Logger logger = Logger.getLogger(WeatherStarter.class.getName());
+    private static final org.apache.logging.log4j.Logger logger2 = LogManager.getLogger(WeatherStarter.class.getName());
+
 
     public static void  main(String[] args ) {
         int id = CITY_ID_AVEIRO;
@@ -27,7 +32,10 @@ public class WeatherStarter {
         if (args.length > 0) {
             try {
                 id = Integer.parseInt(args[0]);
-            } catch (Exception ex) {}
+                logger2.debug("city id read from command line argument (" + id + ")");
+            } catch (Exception ex) {
+                logger2.error("invalid argument passed (" + args[0] +"); the default value will be used: " + id);
+            }
         }
 
         /*
@@ -60,13 +68,15 @@ public class WeatherStarter {
                 //logger.info( "max temp for today: " + today.getTMax());
 
 
-
+                logger2.info("information fetched successfully!");
 
             } else {
                 logger.info( "No results!");
+                logger2.info("No results were found.");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            logger2.error("An error occurred while looking for the information.");
         }
 
     }

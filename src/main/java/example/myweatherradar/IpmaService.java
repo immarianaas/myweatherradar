@@ -20,7 +20,7 @@ public interface IpmaService {
 
     //
     @GET("distrits-islands.json")
-    Call<IpmaCityForecast> getCitiesIds();
+    Call<CitiesInfo> getCitiesIds();
     
 
 }

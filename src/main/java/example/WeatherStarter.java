@@ -47,7 +47,8 @@ public class WeatherStarter {
         Boolean flagCityID = false;
         try{
             Response<CitiesInfo> apiResponse = callSyncCities.execute();
-            Iterator<CityForecast> iter = forecast.getData().listIterator();
+            CitiesInfo citiesInfo = apiResponse.body();
+            Iterator<CityInfo> iter = citiesInfo.getData().listIterator();
             while (iter.hasNext()) {
                 CityInfo cityInfo = iter.next();
                 if(cityInfo.getIdLocal().equals(city)){

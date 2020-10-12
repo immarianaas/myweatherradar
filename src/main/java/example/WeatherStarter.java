@@ -70,7 +70,7 @@ public class WeatherStarter {
             ex.printStackTrace();
         }
         if(flagCityID){
-            logger.info("\n\nCidade valida!");
+            logger2.info("\n\nCidade valida!");
         }
        
         //----------------
@@ -86,16 +86,7 @@ public class WeatherStarter {
                 Iterator<CityForecast> iterator = forecast.getData().listIterator();
                 while (iterator.hasNext()){
                     CityForecast today = iterator.next();
-                    /*
-                    String info = "\n\nCity ID: " + cityID +
-                    "\nCity Name:" +city + 
-                    "\nforecast date:: " + infoCityForecast.getForecastDate() + "\n" +
-                    "   Minimum temperature:  " + infoCityForecast.getTMin() + " ºC" +"\n" +
-                    "   Maximum temperature:  "+  infoCityForecast.getTMax() + " ºC" + "\n" +
-                    "   --> precepitation probabilty: " + infoCityForecast.getPrecipitaProb() + " %" + "\n";
-                    allInfo = allInfo + "\n" +infoForecast;
-                    */
-                    String info = "\n------ CITY Name: " + city + "[ " + cityID + "]" +
+                    String info = "\n------ CITY Name: " + city + " [" + cityID + "] " +
                 "\n--> precepitation probabilty: " + today.getPrecipitaProb() +
                 "\n--> minimum temperature: " + today.getTMin() +
                 "\n--> maximum temperature: " + today.getTMax() +

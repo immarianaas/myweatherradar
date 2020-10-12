@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 //is necessary to create a new class because the api has inside data the followig atributes
 //that are the keys 
-class CityInfo {
+public class CityInfo {
 
     @SerializedName("idRegiao")
     @Expose

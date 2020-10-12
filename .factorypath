@@ -1,0 +1,9 @@
+<factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/squareup/retrofit2/retrofit/2.3.0/retrofit-2.3.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/squareup/okhttp3/okhttp/3.8.0/okhttp-3.8.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/squareup/okio/okio/1.13.0/okio-1.13.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/squareup/retrofit2/converter-gson/2.3.0/converter-gson-2.3.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/google/code/gson/gson/2.7/gson-2.7.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-api/2.6.1/log4j-api-2.6.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-core/2.6.1/log4j-core-2.6.1.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

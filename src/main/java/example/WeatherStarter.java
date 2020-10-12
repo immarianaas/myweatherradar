@@ -8,6 +8,8 @@ import example.myweatherradar.*;
 import java.util.Iterator;
 //import example.ipma_client.IpmaService;
 
+import org.apache.logging.log4j.*;
+
 import java.util.logging.Logger;
 
 /**
@@ -20,7 +22,10 @@ public class WeatherStarter {
     loggers provide a better alternative to System.out.println
     https://rules.sonarsource.com/java/tag/bad-practice/RSPEC-106
      */
+    
     private static final Logger logger = Logger.getLogger(WeatherStarter.class.getName());
+    private static final org.apache.logging.log4j.Logger logger2 = LogManager.getLogger(WeatherStarter.class.getName());
+
 
     public static void  main(String[] args ) {
         String city = "Aveiro";
@@ -28,7 +33,10 @@ public class WeatherStarter {
         if (args.length > 0) {
             try {
                 city = args[0];
-            } catch (Exception ex) {}
+                logger2.debug("city id read from command line argument (" + city + ")");
+            } catch (Exception ex) {
+                logger2.error("invalid argument passed (" + args[0] +"); the default value will be used: " + city);
+            }
         }
 
         /*
@@ -77,23 +85,33 @@ public class WeatherStarter {
             if (forecast != null) {
                 Iterator<CityForecast> iterator = forecast.getData().listIterator();
                 while (iterator.hasNext()){
-                    CityForecast infoCityForecast = iterator.next();
-                    String infoForecast = "\n\nCity ID: " + cityID +
+                    CityForecast today = iterator.next();
+                    /*
+                    String info = "\n\nCity ID: " + cityID +
                     "\nCity Name:" +city + 
                     "\nforecast date:: " + infoCityForecast.getForecastDate() + "\n" +
                     "   Minimum temperature:  " + infoCityForecast.getTMin() + " ºC" +"\n" +
                     "   Maximum temperature:  "+  infoCityForecast.getTMax() + " ºC" + "\n" +
                     "   --> precepitation probabilty: " + infoCityForecast.getPrecipitaProb() + " %" + "\n";
                     allInfo = allInfo + "\n" +infoForecast;
+                    */
+                    String info = "\n------ CITY Name: " + city + "[ " + cityID + "]" +
+                "\n--> precepitation probabilty: " + today.getPrecipitaProb() +
+                "\n--> minimum temperature: " + today.getTMin() +
+                "\n--> maximum temperature: " + today.getTMax() +
+                "\n--> forecast date: " + today.getForecastDate();
+                logger.info(info);
                 }
-                logger.info(allInfo);
+                logger.info("\n\nobrigada e volte sempre");
                     
             
             } else {
                 logger.info( "No results!");
+                logger2.info("No results were found.");
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger2.error("An error occurred while looking for the information.");
         }
 
 
